@@ -155,7 +155,7 @@
         <!--Home View Controller-->
         <scene sceneID="MKa-X4-m6u">
             <objects>
-                <viewController id="aHX-Dl-ulZ" customClass="HomeViewController" customModule="LoginPage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" id="aHX-Dl-ulZ" customClass="HomeViewController" customModule="LoginPage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4ur-NO-Vl9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		AC186F8124080E4C0066FBCD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC186F8024080E4C0066FBCD /* Theme.swift */; };
 		AC186F8324080F810066FBCD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC186F8224080F810066FBCD /* Colors.xcassets */; };
 		AC186F85240810300066FBCD /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC186F84240810300066FBCD /* UITextFieldExtension.swift */; };
+		AC3090F1240BF7ED0080E3E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3090F0240BF7ED0080E3E0 /* Constants.swift */; };
 		E3BF96A3BAA3043D9AEAEE1F /* Pods_LoginPage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD314FCE5CF138A4AB1F7BEB /* Pods_LoginPage.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		AC186F8024080E4C0066FBCD /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AC186F8224080F810066FBCD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		AC186F84240810300066FBCD /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		AC3090F0240BF7ED0080E3E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B685E6724F8F270F5BCAF45A /* Pods-LoginPage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginPage.debug.xcconfig"; path = "Target Support Files/Pods-LoginPage/Pods-LoginPage.debug.xcconfig"; sourceTree = "<group>"; };
 		CD314FCE5CF138A4AB1F7BEB /* Pods_LoginPage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginPage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,7 +76,6 @@
 				B685E6724F8F270F5BCAF45A /* Pods-LoginPage.debug.xcconfig */,
 				92A1F6BE5BAE978251AFFADE /* Pods-LoginPage.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,6 +129,7 @@
 		AC186F7D24080BDC0066FBCD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AC3090F0240BF7ED0080E3E0 /* Constants.swift */,
 				AC186F7B24080BCA0066FBCD /* Utilities.swift */,
 				AC186F7E24080E000066FBCD /* UIButtonExtension.swift */,
 				AC186F84240810300066FBCD /* UITextFieldExtension.swift */,
@@ -253,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC186F8124080E4C0066FBCD /* Theme.swift in Sources */,
+				AC3090F1240BF7ED0080E3E0 /* Constants.swift in Sources */,
 				AC186F63240801110066FBCD /* ViewController.swift in Sources */,
 				AC186F7F24080E000066FBCD /* UIButtonExtension.swift in Sources */,
 				AC186F5F240801110066FBCD /* AppDelegate.swift in Sources */,

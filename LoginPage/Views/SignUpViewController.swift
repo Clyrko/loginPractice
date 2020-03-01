@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class SignUpViewController: UIViewController {
     
@@ -47,17 +49,90 @@ class SignUpViewController: UIViewController {
         passwordTextField.styleTextField()
         
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func validateFields() -> String? {
+        
+        // CHeck that all fields are filled in
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            return "Please fill in all fields."
+        }
+        
+        // Check if the password is secure
+        
+        let userPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+       if Utilities.isPasswordValid(userPassword) == false {
+            
+            // Password is not secure
+            
+            return "Please make sure that your password is at least eight(8) characters, contains a special character (!@#$%^&*), and at least one(1) number."
+        }
+         
+        
+        return nil
     }
-    */
 
     @IBAction func signUpTouched(_ sender: UIButton) {
+        
+        // Validate fields
+        
+        let error = validateFields()
+        
+        if error != nil {
+            
+            // Show error message
+            showErrorMessage(error!)
+            
+        } else {
+            
+            // Create Data
+            
+            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Create the user
+        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+            // Check for errors
+            
+            if err != nil {
+//                err?.localizedDescription
+                
+                // There was an error creating the user
+                
+                self.showErrorMessage("Error creating the user")
+            } else {
+                
+    
+                
+                // User creation was successful. Store first & last name
+                
+                let db = Firestore.firestore()
+                
+                db.collection("users").addDocument(data: ["firstName":firstName, "lastName":lastName, "uid": result!.user.uid ]) { (error) in
+                    
+                    if error != nil {
+                        
+                        // Show error message
+                        
+                        self.showErrorMessage("User saving data error")
+                    }
+                }
+                
+                // Transition to the home screen
+                
+                self.transitionToMain()
+            }
+            }
+        }
     }
     
     @IBAction func signUpWithAppleTouched(_ sender: UIButton) {
@@ -66,4 +141,19 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpWithGoogleTouched(_ sender: UIButton) {
     }
     
+    func showErrorMessage(_ message:String) {
+        
+        errorLabel.text = message
+        errorLabel.alpha = 1
+    }
+    
+    
+    func transitionToMain() {
+        
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController ) as? HomeViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+        
+    }
 }
